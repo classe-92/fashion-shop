@@ -4,13 +4,6 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Vue project
 
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
 ```bash
 # 1. Crea repo su git (senza opzioni se non pubblico)
 # 2. Clonare la repo e apri la cartella su vs code e aprire terminale
@@ -30,6 +23,29 @@ npm install @fontsource/montserrat
 # inizialmente commentiamo l'importazione e l'uso del router di view dal main js
 ```
 
-### Compile and Minify for Production
+### Assets
+```bash
+# src/assets/styles/partials/_variable.scss
+// COLORS
+$bg-color: #fefefe;
+$text-color: #333;
+
+//Typography
+$main-font: 'Montserrat', sans-serif;
+
+# src/assets/styles/main.scss
+@use './partials/variables' as *;
+
+$fa-font-path: '../webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+
+@import 'bootstrap/scss/bootstrap';
+
+@import '@fontsource/montserrat/index.css';
+@import '@fontsource/montserrat/700.css';
+
+# ...style here
+```
 
 
