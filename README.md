@@ -11,8 +11,8 @@ npm install
 
 ### Compile and Hot-Reload for Development
 
-```sh
-..# 1. Crea repo su git (senza opzioni se non pubblico)
+```bash
+# 1. Crea repo su git (senza opzioni se non pubblico)
 # 2. Clonare la repo e apri la cartella su vs code e aprire terminale
 # 3. digitare: npm init vue@latest
 # 4. per creare il progetto nella directory corrente mettere solo un  punto
@@ -32,6 +32,4 @@ npm install @fontsource/montserrat
 
 ### Compile and Minify for Production
 
-```sh
-npm run build
-```
+
