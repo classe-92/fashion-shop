@@ -1,10 +1,13 @@
 <template>
-    <h1>OOOPS ! Errore</h1>
+    <section class="container">
+        <h1>OOOPS ! Errore</h1>
+    </section>
 </template>
 
 <script>
 export default {
-    name: 'NotFound'
+    name: 'NotFound',
+    props: ['code', 'message']
 }
 </script>
 

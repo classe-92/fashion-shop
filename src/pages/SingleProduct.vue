@@ -1,36 +1,62 @@
 <template>
-    <div v-if="product">
-        <h1>{{ product.name }}</h1>
-        <img :src="imgBasePath + product.cover_image" :alt="product.name">
-        <ul>
+    <section class="container" v-if="product">
+        <div class="mb-4">
+            <div class="container-fluid d-flex justify-content-between">
+                <div class="p-4 w-25">
+                    <img :src="getImagePath" :alt="product.name" class="image-fit" />
+                </div>
+
+                <div class="p-4 w-75">
+                    <h1 class="display-5 fw-bold">{{ product.name }}</h1>
+                    <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one
+                        in
+                        previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to
+                        your liking.
+                    </p>
+                    <button class="btn btn-primary btn-lg" type="button">Example button</button>
+                </div>
+
+
+            </div>
+        </div>
+        <ul v-if="product.colors">
             <li v-for="color in product.colors" :style="{ backgroundColor: color.hex_value }">
                 {{ color.name }}
             </li>
         </ul>
-    </div>
+    </section>
 </template>
 
 <script>
+import { store } from '../store';
 import axios from 'axios'
 export default {
     name: 'SingleProduct',
     data() {
         return {
+            store,
             product: null,
-            apiUrl: 'http://127.0.0.1:8000/api',
-            imgBasePath: 'http://127.0.0.1:8000/storage/',
+            loading: false
         }
     },
     methods: {
         getProduct() {
-            axios.get(`${this.apiUrl}/products/${this.$route.params.slug}`).then((res) => {
+            this.loading = true;
+            axios.get(`${store.apiURL}/products/${this.$route.params.slug}`).then((res) => {
                 console.log(res.data.results);
-                if (res.data.success) {
-                    this.product = res.data.results;
-                } else {
-                    this.$router.push({ name: 'not-found' })
-                }
-            })
+                this.product = res.data.results;
+            }).catch((error) => {
+                console.log(error);
+                console.log(error.response.data);
+                this.$router.push({ name: 'not-found' });
+            }).finally(() => {
+                this.loading = false;
+            });
+        }
+    },
+    computed: {
+        getImagePath() {
+            return store.imgBasePath + this.product.cover_image;
         }
     },
     mounted() {

@@ -3,18 +3,17 @@
     <main>
         <router-view></router-view>
     </main>
-
-    <footer>
-        <h3>Sono Il footer</h3>
-    </footer>
+    <FooterApp />
 </template>
 
 <script>
 import HeaderApp from './components/HeaderApp.vue';
+import FooterApp from './components/FooterApp.vue';
 export default {
     name: 'App',
     components: {
-        HeaderApp
+        HeaderApp,
+        FooterApp
     }
 
 }
