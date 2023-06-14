@@ -11,7 +11,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item" v-for="(link, index) in menu" :key="index">
                             <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                            <router-link :to="{ name: link.routeName }" class="nav-link">
+                            <router-link :to="{ name: link.routeName }" class="nav-link" active-class="active">
                                 {{ link.label }}
                             </router-link>
                         </li>

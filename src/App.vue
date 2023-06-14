@@ -1,6 +1,9 @@
 <template>
     <HeaderApp />
-    <router-view></router-view>
+    <main>
+        <router-view></router-view>
+    </main>
+
     <footer>
         <h3>Sono Il footer</h3>
     </footer>
@@ -12,7 +15,6 @@ export default {
     name: 'App',
     components: {
         HeaderApp
-
     }
 
 }
