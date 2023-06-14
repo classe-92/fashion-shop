@@ -43,5 +43,13 @@ $fa-font-path: '../webfonts';
 
 # ...style here
 ```
+### Routing
+```bash
+# installiamo vue router
+npm install vue-router@4
 
+
+
+
+```
 
