@@ -1,5 +1,5 @@
 <template>
-    <HeaderApp></HeaderApp>
+    <HeaderApp />
     <router-view></router-view>
     <footer>
         <h3>Sono Il footer</h3>
