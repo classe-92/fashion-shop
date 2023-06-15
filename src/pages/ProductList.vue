@@ -38,12 +38,11 @@ export default {
             products: [],
             currentPage: 1,
             lastPage: null,
-            loading: false
+            loading: true
         }
     },
     methods: {
         getData(numPage) {
-            this.loading = true;
             axios.get(`${store.apiURL}/products`, {
                 params: {
                     'page': numPage

@@ -14,6 +14,9 @@ $primary: #d90024;
 .w-30{
     width: 30%;
 }
+.h-300{
+    height: 120px;
+}
 .image-fit{
     object-fit: cover;
     width: 100%;
@@ -22,6 +25,19 @@ $primary: #d90024;
 footer {
     height: 70px;
     color: white;
+}
+.hero{
+    background-image: url('../img/makeup-products.png');
+    background-size: cover;
+    height: 60vh;
+    min-height: 300px;
+    h1{
+        font-size: 10vw;
+        padding: 20px;
+        color:$mk_txt_dark_gray;
+        opacity: 0.5;
+    }
+
 }
 #product-list{
     .card{
