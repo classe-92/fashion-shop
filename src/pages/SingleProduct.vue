@@ -15,7 +15,9 @@
                         <span> Add to Cart</span>
                     </button>
                 </div>
-
+                <router-link :to="{ name: 'single-product', params: { slug: 'blotted-lip' } }" class="btn btn-primary">Altro
+                    prodotto
+                </router-link>
 
             </div>
         </div>
@@ -65,8 +67,18 @@ export default {
     mounted() {
         // console.log(this.$router);
         // console.log(this.$route);
+
         this.getProduct();
-    }
+    },
+    created() {
+        this.$watch(
+            () => this.$route.params,
+            (toParams, previousParams) => {
+                // react to route changes...
+                this.getProduct();
+            }
+        )
+    },
 }
 </script>
 
