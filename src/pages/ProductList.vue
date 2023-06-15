@@ -1,7 +1,17 @@
 <template>
     <LoaderApp v-if="loading" />
     <section class="container" id="product-list" v-if="!loading">
-        <h1>{{ title }}</h1>
+        <div class="d-flex justify-content-between mb-3">
+            <h1>{{ title }}</h1>
+
+            <select name="category" id="category" v-model="selectedCategory" @change="getData(1)">
+                <option value="">All</option>
+                <option :value="category.id" v-for="(category, index) in categories" :key="category.id">{{ category.name }}
+                </option>
+            </select>
+
+        </div>
+
         <div class="row gy-4 mb-4">
             <ProductCard v-for="(product, index) in products" :key="product.id" :product="product" />
         </div>
@@ -36,6 +46,8 @@ export default {
             store,
             title: 'Products List',
             products: [],
+            categories: [],
+            selectedCategory: '',
             currentPage: 1,
             lastPage: null,
             loading: true
@@ -43,15 +55,21 @@ export default {
     },
     methods: {
         getData(numPage) {
+            let params = {
+                'page': numPage
+            }
+            if (this.selectedCategory) {
+                params.category_id = this.selectedCategory
+            }
             axios.get(`${store.apiURL}/products`, {
-                params: {
-                    'page': numPage
-                }
+                params
+
             }).then((res) => {
                 //console.log(res);
-                this.products = res.data.results.data;
-                this.currentPage = res.data.results.current_page;
-                this.lastPage = res.data.results.last_page;
+                this.products = res.data.results.products.data;
+                this.currentPage = res.data.results.products.current_page;
+                this.lastPage = res.data.results.products.last_page;
+                this.categories = res.data.results.categories;
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
