@@ -7,10 +7,10 @@
                 </router-link>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" @click="show = !show">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse" :class="{ 'show': show }" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item" v-for="(link, index) in menu" :key="index">
                             <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
@@ -53,7 +53,8 @@ export default {
                     label: 'Contacts',
                     routeName: 'contact'
                 }
-            ]
+            ],
+            show: false
         }
     }
 
