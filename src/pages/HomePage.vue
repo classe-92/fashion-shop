@@ -31,7 +31,7 @@
                         <Transition :name="direction">
                             <div class="carousel-item active" :key="products[activeSlide].id">
                                 <img :src="store.imgBasePath + products[activeSlide].cover_image" class="d-block"
-                                    alt="..." />
+                                    :alt="products[activeSlide].name" />
 
 
                                 <div class="carousel-caption d-none d-md-block">
