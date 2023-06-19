@@ -65,8 +65,6 @@ export default {
             // pulisco l'array con i messaggi
             this.errors = {};
 
-            // Importante - Stiamo comunicando con Laravel, quindi non è più obbligatorio inserire gli headers con il Content-Type
-            // come abbiamo fatto invece quando comunicavamo direttamente con gli script PHP
             axios.post(`${this.store.apiURL}/contacts`, data).then((response) => {
                 this.success = response.data.success;
                 if (!this.success) {
